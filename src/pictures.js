@@ -117,7 +117,7 @@ export class PictureMaker {
     this.renderer.setSize(512, 512, false);
     this.scene.add(root);
     root.updateMatrixWorld(true);
-    frame(this.camera, root, { dir: new THREE.Vector3(0, 0.12, 1), pad: 1.02 });
+    frame(this.camera, root, { dir: new THREE.Vector3(0, 0.12, 1), pad: 0.88 });
     this.renderer.render(this.scene, this.camera);
     const shot = document.createElement('canvas');
     shot.width = shot.height = 512;

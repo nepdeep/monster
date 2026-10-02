@@ -235,9 +235,16 @@ function tickle() {
 
 function dance() {
   const stop = sound.music(12, 140);
-  const notes = setInterval(() => effects.notes(monster.body.localToWorld(new THREE.Vector3(0, 1.2, 0.3)), 2), 600);
+  let dancing = true;
+  // music notes on the game clock, so slow devices don't get a pile-up
+  (async () => {
+    while (dancing) {
+      effects.notes(monster.body.localToWorld(new THREE.Vector3(0, 1.2, 0.3)), 1);
+      await tweens.wait(0.7);
+    }
+  })();
   return once('dance', () => monster.dance()).finally(() => {
-    clearInterval(notes);
+    dancing = false;
     stop();
   });
 }

@@ -135,8 +135,13 @@ try {
 
   console.log('Optional wish');
   const wish = await game(() => window.__fuzzy.store.makeWish());
-  await page.waitForTimeout(400);
-  ok(await page.locator('#wish.show').isVisible(), `wish bubble shows a picture (${wish.category}: ${wish.id})`);
+  const bubbleShown = await page
+    .waitForFunction(() => {
+      const w = document.getElementById('wish');
+      return w.classList.contains('show') && getComputedStyle(w).opacity === '1' && w.querySelector('img').naturalWidth > 0;
+    }, null, { timeout: 30000 })
+    .then(() => true, () => false);
+  ok(bubbleShown, `wish bubble shows a picture (${wish.category}: ${wish.id})`);
   await shot('05-wish');
   // ignoring it is fine: other changes keep working
   const other = wish.category === 'hat' ? 'wings' : 'hat';
