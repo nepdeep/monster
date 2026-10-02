@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="theme-color" content="#ffd3e8" />
+    <meta name="description" content="Fuzzy Friends: Monster Makeover — dress up a cuddly 3D monster." />
+    <title>Fuzzy Friends: Monster Makeover</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='34' r='26' fill='%235fbfff'/%3E%3Ccircle cx='23' cy='28' r='7' fill='%23fff'/%3E%3Ccircle cx='41' cy='28' r='7' fill='%23fff'/%3E%3Ccircle cx='24' cy='29' r='3.5' fill='%2322163a'/%3E%3Ccircle cx='42' cy='29' r='3.5' fill='%2322163a'/%3E%3Cpath d='M22 41 q10 10 20 0' fill='%235a1533'/%3E%3C/svg%3E" />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body data-mode="loading">
+    <canvas id="scene" aria-label="Your fuzzy monster in the dressing room. Tap the tummy to tickle, tap the feet to dance."></canvas>
+
+    <div id="hud">
+      <div class="corner top-left">
+        <button id="undo" class="round-btn" aria-label="Undo" disabled></button>
+        <button id="shuffle" class="round-btn" aria-label="Surprise outfit"></button>
+      </div>
+      <div class="corner top-right">
+        <button id="mute" class="round-btn small"></button>
+        <button id="motion" class="round-btn small"></button>
+      </div>
+      <nav id="tabs" role="tablist" aria-label="Kinds of things to wear"></nav>
+      <div id="tray" role="group" aria-label="Choices"></div>
+      <button id="stage-btn" aria-label="Go to the stage for a fashion show"></button>
+      <button id="wish" aria-label="Your monster has a wish"><img alt="" draggable="false" /></button>
+    </div>
+
+    <div id="heart-burst" aria-hidden="true"></div>
+    <div id="flash" aria-hidden="true"></div>
+
+    <div id="sticker-screen" hidden>
+      <div class="sticker-wrap"><img id="sticker-img" alt="A sticker of your monster in its outfit" draggable="false" /></div>
+      <div class="sticker-actions">
+        <button id="again" class="big-btn" aria-label="Keep decorating"></button>
+        <button id="new-friend" class="big-btn" aria-label="Make a new friend"></button>
+      </div>
+    </div>
+
+    <div id="loading" aria-label="Loading">
+      <span></span><span></span><span></span>
+    </div>
+    <noscript>This game needs JavaScript and WebGL.</noscript>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
